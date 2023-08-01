@@ -3,9 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ProfessoresController } from './professores/professores.controller';
-import { ProfessoresService } from './professores/professores.service';
-import { Professor } from './entitys/professor.entity';
+import { ProfessorModule } from './professores/professores.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -22,9 +20,9 @@ import { Professor } from './entitys/professor.entity';
         trustServerCertificate: true,
       }
     }),
-    TypeOrmModule.forFeature([Professor])
+    ProfessorModule,
   ],
-  controllers: [AppController, ProfessoresController],
-  providers: [AppService, ProfessoresService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule { }

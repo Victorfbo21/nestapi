@@ -14,4 +14,8 @@ export class ProfessoresService {
     async createProfessor(data: Professor): Promise<Professor> {
         return this.professoresRepository.create(data);
     }
+
+    async list(): Promise<Professor[]> {
+        return this.professoresRepository.find();
+    }
 }
